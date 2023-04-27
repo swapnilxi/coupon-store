@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h1 style="width: 100%; text-align: center; background-color: aquamarine; padding: 5%;">Profile</h1>
+    <h1 th:text="${name}"></h1>
+    Here is your profile <span th:text="${ #strings.toUpperCase(name)}" ></span>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>  </td>
+
+            <td th:text="${name}"></td>
+        </tr>
+        <tr>
+            <td>BrandCategory</td>
+            <td>  </td>
+            <td th:text="${category}"></td>
+        </tr>
+        <tr>
+            <td>BrandName</td>
+            <td>  </td>
+            <td th:text="${brandName}"></td>
+        </tr>
+    </table>
+    
+</body>
+</html>
