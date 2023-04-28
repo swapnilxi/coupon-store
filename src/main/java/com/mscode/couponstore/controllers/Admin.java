@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Admin {
     @RequestMapping("/admin")
-    public String Admindashboard(){
+    public String admindashboard(){
     System.out.println("opening Admin dashboard");
     return "admin";
     }
     @RequestMapping(value="/profileDemo", method=RequestMethod.GET)
-    public String Namedemo(Model model) {
+    public String profileDemo(Model model) {
         System.out.println("passing name data using model");
         model.addAttribute("name", "adminDemo");
         model.addAttribute("category", "demoCategory");
@@ -25,7 +25,7 @@ public class Admin {
     }
 
     @RequestMapping(value="/admin/categories", method=RequestMethod.GET)
-    public String requestMethodName() {
+    public String showCat() {
         return "categories";
     }
     
