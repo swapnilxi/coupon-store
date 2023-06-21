@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mscode.couponstore.model.Category;
 import com.mscode.couponstore.service.CategoryService;
 
-import jakarta.persistence.Id;
-
 
 @Controller
 public class Admin {
@@ -32,6 +30,8 @@ public class Admin {
         model.addAttribute("brandName", "demoBrand");
         return "profileDemo";
     }
+    
+    //<--categories-->
 
     @RequestMapping(value="/admin/categories", method=RequestMethod.GET)
     public String getCat(Model model){
@@ -69,6 +69,13 @@ public class Admin {
        }else{
         return "404";
        }
+    }
+
+    //<--products-->
+    @GetMapping(value="/admin/products")
+    public String getProducts(Model model){
+        model.addAttribute("category", new Category());//sending object
+        return "products";
     }
 
 
