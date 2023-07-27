@@ -1,22 +1,28 @@
 package com.mscode.couponstore.controllers;
+import com.mscode.couponstore.dto.ProductDTO;
+import com.mscode.couponstore.model.Product;
+import com.mscode.couponstore.service.ProductService;
+import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import org.springframework.web.bind.annotation.*;
 import com.mscode.couponstore.model.Category;
 import com.mscode.couponstore.service.CategoryService;
 
-
+//controller for product and category
 @Controller
 public class Admin {
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    ProductService productService;
     @RequestMapping("/admin")
     public String Admindashboard(){
     System.out.println("opening Admin dashboard");
@@ -72,16 +78,20 @@ public class Admin {
     }
 
     //<--products-->
-    @GetMapping(value="/admin/products")
+    @GetMapping(value="admin/products")
     public String getProducts(Model model){
-        model.addAttribute("category", new Category());//sending object
+        model.addAttribute("products", productService.getAllProduct() );//sending object
         return "products";
     }
-
-
-
-    
-    
-    
+    @GetMapping(value="admin/products/add")
+    public String ProductAddGEt(Model model){
+        model.addAttribute("productsDTO", new ProductDTO() );//sending object
+        model.addAttribute("categories", categoryService.getAllCategory());
+        return "productsAdd";
+    }
+    @PostMapping("/admin/products/add")
+    public String ProductAddPost(@ModelAttribute("productDTO") ProductDTO productDTO){
+    return  "redirect:/admin/products";
+    }
 
 }
