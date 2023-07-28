@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Data
+
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

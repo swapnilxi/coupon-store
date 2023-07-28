@@ -15,6 +15,7 @@ import java.util.*;
 import org.springframework.web.bind.annotation.*;
 import com.mscode.couponstore.model.Category;
 import com.mscode.couponstore.service.CategoryService;
+import org.springframework.web.multipart.MultipartFile;
 
 //controller for product and category
 @Controller
@@ -90,7 +91,19 @@ public class Admin {
         return "productsAdd";
     }
     @PostMapping("/admin/products/add")
-    public String ProductAddPost(@ModelAttribute("productDTO") ProductDTO productDTO){
+    public String ProductAddPost( @ModelAttribute("productDTO")ProductDTO productDTO,
+                                  @RequestParam("productImage" ) MultipartFile file,
+                                  @RequestParam("imgName")String p_imageName ) throws IOException
+    {
+        Product product = new Product();
+        product.setP_id(productDTO.getId()); product.setName (productDTO.getName());
+        product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
+        product.setPrice(productDTO.getPrice());
+        product.setP_description()(productDTO.getP_description());
+        String imageUUID;
+        if(!file.isEmpty(){
+        imageUUID = file.getOriginalFilename();
+        Path fileNameAndPath = Paths.get(uploadDir, imageUUID);1
     return  "redirect:/admin/products";
     }
 

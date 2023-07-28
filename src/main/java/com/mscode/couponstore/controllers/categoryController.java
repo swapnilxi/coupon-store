@@ -11,6 +11,4 @@ public class categoryController {
         System.out.println("categories");
         return "categories";
     }
-
-    
 }

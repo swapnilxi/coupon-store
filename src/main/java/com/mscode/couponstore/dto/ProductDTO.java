@@ -12,7 +12,6 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-
 public class ProductDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
