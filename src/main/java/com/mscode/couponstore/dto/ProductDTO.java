@@ -15,7 +15,8 @@ import lombok.Data;
 public class ProductDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; 
+    private Long id;
+    private String p_name;
     private int categoryId;
     private double price;
     private String p_description;

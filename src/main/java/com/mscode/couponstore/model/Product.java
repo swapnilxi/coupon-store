@@ -17,7 +17,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long p_id;
     private String p_name;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "cat_id", referencedColumnName="cat_id")
     private Category category;
