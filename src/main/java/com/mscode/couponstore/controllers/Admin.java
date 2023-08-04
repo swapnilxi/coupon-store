@@ -143,7 +143,5 @@ public class Admin {
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("productDTO", productDTO);
         return "productsAdd";
-
-
     }
 }
